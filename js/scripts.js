@@ -1,42 +1,59 @@
-function hideResultsAndError() {
-  document.getElementById("cat").setAttribute("class", "hidden");
-  document.getElementById("elephant").setAttribute("class", "hidden");
-  document.getElementById("monkey").setAttribute("class", "hidden");
-  document.getElementById("owl").setAttribute("class", "hidden");
-  document.getElementById("dog").setAttribute("class", "hidden");
-  document.getElementById("dog").setAttribute("class", "hidden");
-} 
-
 window.addEventListener("load", function() {
-  let form = document.querySelector("form");
-  let submit = document.getElementById("submit");
+  let form = document.getElementById("form");
+  let submit = document.querySelector("#form button[type='submit']");
   let resetBtn = document.getElementById("reset");
-  let colorVal = parseInt(document.getElementById("color").value);
-  let beverageVal = parseInt(document.getElementById("beverage").value);
-  let locationVal = parseInt(document.getElementById("location").value);
-  let hobbyVal = parseInt(document.getElementById("hobby")).value;
-  hideResultsAndError();
-});
 
-  resetBtn.addEventListener("click", function() {
-    document.getElementById("color").value = null;
-    document.getElementById("beverage").value = null;
-    document.getElementById("location").value = null;
-    document.getElementById("hobby").value = null;
-  });
-  
-  document.querySelector("form").onsubmit = function(event) {
+  submit.addEventListener("click", function(event) {
     event.preventDefault();
     hideResultsAndError();
 
+    let colorVal = parseInt(document.getElementById("color").value, 10);
+    let beverageVal = parseInt(document.getElementById("beverage").value, 10);
+    let locationVal = parseInt(document.getElementById("location").value, 10);
+    let hobbyVal = parseInt(document.getElementById("hobby").value, 10);
+
     document.getElementById("reset").removeAttribute("class");
 
-    let ans= colorVal + beverageVal + locationVal + hobbyVal;
-    if( ans >= 0){
-      document.getElementById("cat").removeAttribute("class");
-      document.getElementById("elephant").removeAttribute("class");
-      document.getElementById("owl").removeAttribute("class");
-      document.getElementById("monkey").removeAttribute("class");
-      document.getElementById("dog").removeAttribute("class");
-    };
+    let ans = colorVal + beverageVal + locationVal + hobbyVal;
+    if (ans >= 0) {
+      displayAnimalType(ans);
+    }
+  });
+
+  resetBtn.addEventListener("click", function() {
+    document.getElementById("color").value = "";
+    document.getElementById("beverage").value = "";
+    document.getElementById("location").value = "";
+    document.getElementById("hobby").value = "";
+  });
+
+  function hideResultsAndError() {
+    document.getElementById("cat").classList.add("hidden");
+    document.getElementById("elephant").classList.add("hidden");
+    document.getElementById("monkey").classList.add("hidden");
+    document.getElementById("owl").classList.add("hidden");
+    document.getElementById("dog").classList.add("hidden");
   }
+
+  function displayAnimalType(ans) {
+    switch (ans) {
+      case 1:
+        document.getElementById("cat").classList.remove("hidden");
+        break;
+      case 2:
+        document.getElementById("elephant").classList.remove("hidden");
+        break;
+      case 3:
+        document.getElementById("monkey").classList.remove("hidden");
+        break;
+      case 4:
+        document.getElementById("dog").classList.remove("hidden");
+        break;
+      case 5:
+        document.getElementById("owl").classList.remove("hidden");
+        break;
+      default:
+        break;
+    }
+  }
+});
