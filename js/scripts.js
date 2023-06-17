@@ -9,6 +9,7 @@ function hideResultsAndError() {
 
 window.addEventListener("load", function() {
   let form = document.querySelector("form");
+  let submit = document.getElementById("submit");
   let resetBtn = document.getElementById("reset");
   let colorVal = parseInt(document.getElementById("color").value);
   let beverageVal = parseInt(document.getElementById("beverage").value);
@@ -24,12 +25,13 @@ window.addEventListener("load", function() {
     document.getElementById("hobby").value = null;
   });
   
+  document.querySelector("form").onsubmit = function(event) {
+    event.preventDefault();
+    hideResultsAndError();
 
-  form.addEventListener("submit", function(event) {
-    resetBtn.removeAttribute("class");
-  });
+    document.getElementById("reset").removeAttribute("class");
 
-  let ans= colorVal + beverageVal + locationVal + hobbyVal;
+    let ans= colorVal + beverageVal + locationVal + hobbyVal;
     if( ans >= 0){
       document.getElementById("cat").removeAttribute("class");
       document.getElementById("elephant").removeAttribute("class");
@@ -37,3 +39,4 @@ window.addEventListener("load", function() {
       document.getElementById("monkey").removeAttribute("class");
       document.getElementById("dog").removeAttribute("class");
     };
+  }
