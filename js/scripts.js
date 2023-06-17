@@ -7,16 +7,25 @@ window.addEventListener("load", function() {
     event.preventDefault();
     hideResultsAndError();
 
-    let colorVal = parseInt(document.getElementById("color").value, 10);
-    let beverageVal = parseInt(document.getElementById("beverage").value, 10);
-    let locationVal = parseInt(document.getElementById("location").value, 10);
-    let hobbyVal = parseInt(document.getElementById("hobby").value, 10);
+    let colorVal = parseInt(document.getElementById("color").value);
+    let beverageVal = parseInt(document.getElementById("beverage").value);
+    let locationVal = parseInt(document.getElementById("location").value);
+    let hobbyVal = parseInt(document.getElementById("hobby").value);
 
     document.getElementById("reset").removeAttribute("class");
 
     let ans = colorVal + beverageVal + locationVal + hobbyVal;
-    if (ans >= 0) {
-      displayAnimalType(ans);
+
+    if (ans >= 4 && ans <= 7) {
+      document.getElementById("cat").classList.remove("hidden");
+    } else if (ans >= 8 && ans <= 10) {
+      document.getElementById("elephant").classList.remove("hidden");
+    } else if (ans >= 11 && ans <= 13) {
+      document.getElementById("monkey").classList.remove("hidden");
+    } else if (ans >= 14 && ans <= 16) {
+      document.getElementById("dog").classList.remove("hidden");
+    } else if (ans >= 17 && ans <= 20) {
+      document.getElementById("owl").classList.remove("hidden");
     }
   });
 
@@ -33,27 +42,5 @@ window.addEventListener("load", function() {
     document.getElementById("monkey").classList.add("hidden");
     document.getElementById("owl").classList.add("hidden");
     document.getElementById("dog").classList.add("hidden");
-  }
-
-  function displayAnimalType(ans) {
-    switch (ans) {
-      case 1:
-        document.getElementById("cat").classList.remove("hidden");
-        break;
-      case 2:
-        document.getElementById("elephant").classList.remove("hidden");
-        break;
-      case 3:
-        document.getElementById("monkey").classList.remove("hidden");
-        break;
-      case 4:
-        document.getElementById("dog").classList.remove("hidden");
-        break;
-      case 5:
-        document.getElementById("owl").classList.remove("hidden");
-        break;
-      default:
-        break;
-    }
   }
 });
