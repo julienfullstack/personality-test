@@ -2,7 +2,7 @@
 <html lang="en-US">
   <head>
     <link rel="stylesheet" href="css/styles.css" type="text/css">
-    <script src="javascript/scripts.js"></script>
+    <script src="js/scripts.js"></script>
     <title>Contact Form</title>
   </head>
   <body>
@@ -11,12 +11,9 @@
 
       <p>A simple and fun personality test to determine your animal personality type</p>
 
-        <p id="error-message" class="hidden">Please complete all fields before submitting.</p>
-
-        <form id="animal-test">
-          <form id="color">
+        <form id="form">
           <h2>What is your favorite color?</h2>
-            <select id="beverage">
+            <select id="color">
               <option value="1">Blue</option>
               <option value="2">Red</option>
               <option value="3">Purple</option>
@@ -51,7 +48,6 @@
               <option value="5">Napping</option>
             </select>
             <button type="submit">Submit Selection</button>
-            <button type="button" class="hidden" id="reset">Reset</button> 
           </form>
 
         <div id="reset" class="hidden"> 
